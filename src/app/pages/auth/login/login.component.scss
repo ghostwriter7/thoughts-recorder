@@ -1,0 +1,17 @@
+@import "../../../../assets/flex";
+
+.login {
+  &__container {
+    @include flexCenter;
+    min-height: 100vh;
+  }
+
+  &__card {
+    width: min(90%, 500px);
+    margin-inline: auto;
+  }
+
+  &__control {
+    width: 100%;
+  }
+}

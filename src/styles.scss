@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$thoughtsApp-primary: mat.define-palette(mat.$green-palette);
+$thoughtsApp-accent: mat.define-palette(mat.$lime-palette, A200, A100, A400);
+$thoughtsApp-warn: mat.define-palette(mat.$deep-orange-palette);
+
+$thoughtsApp-theme: mat.define-dark-theme((
+  color: (
+    primary: $thoughtsApp-primary,
+    accent: $thoughtsApp-accent,
+    warn: $thoughtsApp-warn,
+  )
+));
+
+@include mat.all-component-themes($thoughtsApp-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
