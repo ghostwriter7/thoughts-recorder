@@ -1,0 +1,39 @@
+<div class="login__container">
+  <mat-card class="login__card">
+    <mat-card-title class="login__title">Signup</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSignup()">
+        <mat-form-field appearance="fill" class="login__control">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="Type your email" formControlName="email">
+          <mat-error *ngIf="this.form.get('email')!.hasError('email')">Please enter a valid email address!</mat-error>
+          <mat-error *ngIf="this.form.get('email')!.hasError('required')">This field cannot be empty!</mat-error>
+        </mat-form-field>
+        <div class="login__password-wrapper">
+          <mat-form-field appearance="fill" class="login__control">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Type your password" formControlName="password">
+            <mat-error *ngIf="this.form.get('password')!.hasError('required')">This field cannot be empty!</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="login__control">
+            <mat-label>Repeat password</mat-label>
+            <input type="password" matInput placeholder="Retype your password" formControlName="repeatPassword">
+            <mat-error *ngIf="this.form.get('repeatPassword')!.hasError('required')">This field cannot be empty!</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+    <div class="login__info">
+      Do you already have an account? <a routerLink="/auth/login">Login now.</a>
+    </div>
+    <mat-card-actions class="login__actions">
+      <button
+        mat-raised-button
+        type="submit"
+        [disabled]="form.invalid"
+        color="primary">
+        Signup
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

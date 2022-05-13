@@ -7,9 +7,11 @@
   }
 
   &__card {
+    @include flexCenter;
+    flex-direction: column;
     width: min(90%, 500px);
     margin-inline: auto;
-    padding: 23px;
+    min-height: 370px;
   }
 
   &__title {
@@ -27,5 +29,10 @@
 
   &__actions {
     text-align: center;
+  }
+
+  &__info {
+    font-size: .8em;
+    margin-block: -.5rem .5rem;
   }
 }

@@ -12,10 +12,13 @@
         <mat-form-field appearance="fill" class="login__control">
           <mat-label>Password</mat-label>
           <input type="password" matInput placeholder="Type your password" formControlName="password">
-          <mat-error *ngIf="this.form.get('email')!.hasError('required')">This field cannot be empty!</mat-error>
+          <mat-error *ngIf="this.form.get('password')!.hasError('required')">This field cannot be empty!</mat-error>
         </mat-form-field>
       </form>
     </mat-card-content>
+    <div class="login__info">
+      Don't have an account yet? <a routerLink="/auth/signup">Sign up!</a>
+    </div>
     <mat-card-actions class="login__actions">
       <button
         mat-raised-button
@@ -25,5 +28,6 @@
         Login
       </button>
     </mat-card-actions>
+
   </mat-card>
 </div>

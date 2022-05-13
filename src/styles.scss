@@ -17,3 +17,12 @@ $thoughtsApp-theme: mat.define-dark-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a {
+  text-decoration: none;
+  color: mat.get-color-from-palette(mat.$green-palette, 500);
+
+  &:hover {
+    color: mat.get-color-from-palette(mat.$green-palette, 800);
+  }
+}
