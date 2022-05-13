@@ -9,9 +9,23 @@
   &__card {
     width: min(90%, 500px);
     margin-inline: auto;
+    padding: 23px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-block: 2rem;
   }
 
   &__control {
     width: 100%;
+
+    &:not(:last-of-type) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__actions {
+    text-align: center;
   }
 }
