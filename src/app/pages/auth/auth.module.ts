@@ -8,7 +8,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import { SignupComponent } from './signup/signup.component';
-
+import {StoreModule} from "@ngrx/store";
+import * as fromAuth from './core/store/auth.reducer';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SignupComponent } from './signup/signup.component';
         MatButtonModule,
         MatInputModule,
         MatFormFieldModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        StoreModule.forFeature(fromAuth.featureKey, fromAuth.authReducer)
     ]
 })
 export class AuthModule { }
