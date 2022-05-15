@@ -26,3 +26,12 @@ a {
     color: mat.get-color-from-palette(mat.$green-palette, 800);
   }
 }
+
+.alert {
+  &--success {
+    background-color: mat.get-color-from-palette($thoughtsApp-primary, 300);
+  }
+  &--error {
+    background-color: mat.get-color-from-palette($thoughtsApp-warn, 300);
+  }
+}

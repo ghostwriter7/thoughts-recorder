@@ -1,0 +1,12 @@
+@import "../../../assets/flex";
+
+.spinner {
+  &__overlay {
+    @include flexCenter;
+    width: 100vw;
+    height: 100vh;
+    inset: 0;
+    position: absolute;
+    backdrop-filter: blur(3px);
+  }
+}

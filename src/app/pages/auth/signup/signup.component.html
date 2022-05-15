@@ -2,7 +2,7 @@
   <mat-card class="login__card">
     <mat-card-title class="login__title">Signup</mat-card-title>
     <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="onSignup()">
+      <form [formGroup]="form">
         <mat-form-field appearance="fill" class="login__control">
           <mat-label>Email</mat-label>
           <input type="email" matInput placeholder="Type your email" formControlName="email">
@@ -14,6 +14,7 @@
             <mat-label>Password</mat-label>
             <input type="password" matInput placeholder="Type your password" formControlName="password">
             <mat-error *ngIf="this.form.get('password')!.hasError('required')">This field cannot be empty!</mat-error>
+            <mat-error *ngIf="this.form.get('password')!.hasError('pattern')">Password is too weak!</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" class="login__control">
             <mat-label>Repeat password</mat-label>
@@ -30,6 +31,7 @@
       <button
         mat-raised-button
         type="submit"
+        (click)="onSignup()"
         [disabled]="form.invalid"
         color="primary">
         Signup
