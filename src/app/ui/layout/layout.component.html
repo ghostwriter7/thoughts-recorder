@@ -1,0 +1,29 @@
+<mat-sidenav-container (backdropClick)="close()">
+  <mat-sidenav #sidenav (keydown.escape)="close()">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Header 1</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <ng-container *ngFor="let item of menuItems">
+          <mat-list-item>
+            <div
+              class="sidenav__link-item"
+              routerLinkActive="sidenav__link-item--active"
+              (click)="close()"
+              [routerLink]="item.path">
+                <mat-icon aria-hidden="false" aria-label="icon">{{item.icon}}</mat-icon>
+                {{item.label}}
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </ng-container>
+
+      </mat-list>
+
+    </mat-expansion-panel>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

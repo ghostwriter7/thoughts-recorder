@@ -1,0 +1,25 @@
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+mat-sidenav {
+  width: min(30vw, 250px);
+  padding: 1rem;
+}
+
+.sidenav {
+  &__link-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+
+    &--active {
+    }
+
+    &--active {
+      color: lightgreen;
+    }
+  }
+
+}
