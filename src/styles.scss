@@ -35,3 +35,7 @@ a {
     background-color: mat.get-color-from-palette($thoughtsApp-warn, 300);
   }
 }
+
+.spacer {
+  flex: 1 1 auto;
+}

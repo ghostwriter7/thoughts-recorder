@@ -21,6 +21,7 @@ export class AuthEffects {
   signUp$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.signUp),
     switchMap(({email, password}) => this.authService.signUp(email, password).pipe(
+      tap(() => this.router.navigateByUrl('/home')),
       map(({email}) => AuthActions.signUpSuccess({email})),
       catchError(({error}) => of(AuthActions.signUpFailure({ message: error.message })))
     ))
@@ -29,7 +30,9 @@ export class AuthEffects {
   apiResponse$ = createEffect(() => this.actions$.pipe(
     ofType(
       AuthActions.loginSuccess,
-      AuthActions.loginFailure
+      AuthActions.loginFailure,
+      AuthActions.signUpSuccess,
+      AuthActions.signUpFailure
     ),
     tap((action) => {
       const message = (action as any).message ?? `You've successfully logged in!`;

@@ -7,6 +7,10 @@ mat-sidenav {
   padding: 1rem;
 }
 
+mat-sidenav-content {
+  padding: 1rem;
+}
+
 .sidenav {
   &__link-item {
     display: flex;
@@ -15,11 +19,7 @@ mat-sidenav {
     cursor: pointer;
 
     &--active {
-    }
-
-    &--active {
       color: lightgreen;
     }
   }
-
 }

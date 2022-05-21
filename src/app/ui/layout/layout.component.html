@@ -10,6 +10,7 @@
             <div
               class="sidenav__link-item"
               routerLinkActive="sidenav__link-item--active"
+              [routerLinkActiveOptions]="{exact: true}"
               (click)="close()"
               [routerLink]="item.path">
                 <mat-icon aria-hidden="false" aria-label="icon">{{item.icon}}</mat-icon>
@@ -18,9 +19,7 @@
           </mat-list-item>
           <mat-divider></mat-divider>
         </ng-container>
-
       </mat-list>
-
     </mat-expansion-panel>
   </mat-sidenav>
   <mat-sidenav-content>

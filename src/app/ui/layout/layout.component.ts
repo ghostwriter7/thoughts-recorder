@@ -10,7 +10,7 @@ export class LayoutComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   public menuItems: { path: string, icon: string, label: string }[] = [
     { path: '/home', icon: 'home', label: 'home'},
-    { path: '/auth/login', icon: 'test', label: 'test'},
+    { path: '/home/folder', icon: 'folder', label: 'Add new folder'},
     { path: '/auth/signup', icon: 'abc', label: 'abc'},
   ];
 

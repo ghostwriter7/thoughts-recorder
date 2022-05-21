@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {ReactiveFormsModule} from "@angular/forms";
 import { HomeComponent } from './home/home.component';
 import {HomeRoutingModule} from "./home-routing.module";
 import { AddEditFolderComponent } from './add-edit-folder/add-edit-folder.component';
@@ -15,13 +16,14 @@ import {MatButtonModule} from "@angular/material/button";
     HomeComponent,
     AddEditFolderComponent
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        ReactiveFormsModule
+    ]
 })
 export class HomeModule { }

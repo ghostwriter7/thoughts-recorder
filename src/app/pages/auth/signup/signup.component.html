@@ -19,7 +19,7 @@
           <mat-form-field appearance="fill" class="login__control">
             <mat-label>Repeat password</mat-label>
             <input type="password" matInput placeholder="Retype your password" formControlName="repeatPassword">
-            <mat-error *ngIf="this.form.get('repeatPassword')!.hasError('required')">This field cannot be empty!</mat-error>
+            <mat-error *ngIf="this.form.get('repeatPassword')!.hasError('isNotSame')">Passwords don't match!</mat-error>
           </mat-form-field>
         </div>
       </form>
