@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {Store} from "@ngrx/store";
 import * as fromRoot from '../../../core/store/app.reducer';
+import * as HomeActions from '../store/home.actions';
 
 @Component({
   selector: 'app-add-edit-folder',
@@ -18,7 +19,7 @@ export class AddEditFolderComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private store: Store) { }
+    private store: Store<fromRoot.AppState>) { }
 
   ngOnInit(): void {
     this.readRouteParams();
@@ -30,7 +31,8 @@ export class AddEditFolderComponent implements OnInit {
   }
 
   save(): void {
-    console.log(this.form.value);
+    const { title, description } = this.form.value;
+    this.store.dispatch(HomeActions.saveFolder({ folder: { title, description } }));
   }
 
   private buildForm(): void {
