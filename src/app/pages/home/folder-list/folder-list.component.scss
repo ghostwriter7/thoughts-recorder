@@ -1,0 +1,18 @@
+@import '../../../../assets/container';
+
+.folders {
+  @include container;
+  width: min(90%, 750px);
+  margin-inline: auto;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__folder {
+    width: 30%;
+  }
+}

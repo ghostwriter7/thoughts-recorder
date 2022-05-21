@@ -1,6 +1,7 @@
+@import '../../../../assets/container';
+
 .folder {
-  width: min(90%, 750px);
-  margin-inline: auto;
+  @include container;
 
   &__header {
     margin-bottom: 1rem;

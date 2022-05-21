@@ -11,13 +11,15 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import * as fromHome from './store/home.reducer';
 import { FolderListComponent } from './folder-list/folder-list.component';
+import { FolderDetailsComponent } from './folder-details/folder-details.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     AddEditFolderComponent,
-    FolderListComponent
+    FolderListComponent,
+    FolderDetailsComponent
   ],
     imports: [
         CommonModule,
