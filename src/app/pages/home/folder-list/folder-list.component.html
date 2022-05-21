@@ -1,0 +1,9 @@
+<mat-card class="folders">
+  <mat-card-header class="folders__header">Your folders...</mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let folder of folders$ | async">
+      {{folder.title}}
+    </div>
+  </mat-card-content>
+</mat-card>
+
