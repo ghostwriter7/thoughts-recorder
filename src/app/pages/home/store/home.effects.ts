@@ -11,7 +11,7 @@ export class HomeEffects {
     concatMap((action) => {
       return this.homeService.saveFolder(action.folder).pipe(
         map((folder) => HomeActions.saveFolderSuccess({folder})),
-        catchError((error) => of(HomeActions.saveFolderFailure))
+        catchError((error) => of(HomeActions.saveFolderFailure()))
       )
     })
   ));
@@ -21,7 +21,7 @@ export class HomeEffects {
     switchMap(() => {
       return this.homeService.getFolders().pipe(
         map((folders) => HomeActions.getFoldersSuccess({folders})),
-        catchError((error) => of(HomeActions.getFoldersFailure))
+        catchError((error) => of(HomeActions.getFoldersFailure()))
       )
     })
   ));
