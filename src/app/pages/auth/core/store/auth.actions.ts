@@ -7,3 +7,5 @@ export const loginFailure = createAction('[API] Login Failure', props<{ message:
 export const signUp = createAction('[SignUp Page] SignUp', props<{ email: string, password: string }>());
 export const signUpSuccess = createAction('[API] SignUp Success', props<{ email: string}>());
 export const signUpFailure = createAction('[API] SignUp Failure', props<{ message: string}>());
+
+export const logout = createAction('[Sidenav] Logout');

@@ -1,5 +1,6 @@
 <mat-sidenav-container (backdropClick)="close()">
-  <mat-sidenav #sidenav (keydown.escape)="close()">
+  <mat-sidenav *ngIf="isLoggedIn$ | async" #sidenav (keydown.escape)="close()">
+    <button class="sidenav__logout-btn" color="accent" mat-raised-button (click)="logout()">Logout</button>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>Header 1</mat-panel-title>

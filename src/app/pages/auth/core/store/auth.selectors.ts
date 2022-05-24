@@ -7,3 +7,10 @@ export const isLoggedIn = createSelector(
   selectAuthState,
   auth => auth.isLoggedIn
 );
+
+export const getAccessToken = createSelector(
+  selectAuthState,
+  auth => auth.accessToken
+);
+
+

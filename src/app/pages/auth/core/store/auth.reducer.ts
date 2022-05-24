@@ -25,5 +25,8 @@ export const authReducer = createReducer(
   })),
   on(AuthActions.loginFailure, (state, action) => ({
     ...state, email: undefined, accessToken: undefined, isLoggedIn: false, isLoggingIn: false
+  })),
+  on(AuthActions.logout, (state) => ({
+    ...state, email: undefined, accessToken: undefined, isLoggedIn: false
   }))
 );

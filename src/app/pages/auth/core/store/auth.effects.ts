@@ -13,7 +13,7 @@ export class AuthEffects {
     switchMap(({email, password}) => this.authService.login(email, password).pipe(
       tap(() => this.router.navigateByUrl('/home')),
       map(({ accessToken }) => AuthActions.loginSuccess({accessToken})),
-      delay(3000),
+      delay(300),
       catchError(({error}) => of(AuthActions.loginFailure({ message: error.message })))
     ))
   ));
@@ -26,6 +26,11 @@ export class AuthEffects {
       catchError(({error}) => of(AuthActions.signUpFailure({ message: error.message })))
     ))
   ));
+
+  logout$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.logout),
+    tap(() => this.router.navigateByUrl('/auth/login'))
+ ), { dispatch: false});
 
   apiResponse$ = createEffect(() => this.actions$.pipe(
     ofType(

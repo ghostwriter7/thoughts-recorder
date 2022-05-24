@@ -12,6 +12,11 @@ mat-sidenav-content {
 }
 
 .sidenav {
+  &__logout-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
   &__link-item {
     display: flex;
     align-items: center;
