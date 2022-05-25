@@ -14,6 +14,8 @@ export class AuthEffects {
       tap(() => this.router.navigateByUrl('/home')),
       map(({ accessToken }) => {
         const expirationDate = Date.now() + 60 * 60 * 1000;
+        const user = JSON.stringify({ accessToken, expirationDate });
+        localStorage.setItem('user', user);
         return AuthActions.loginSuccess({accessToken, expirationDate});
       }),
       delay(300),
@@ -33,6 +35,7 @@ export class AuthEffects {
   logout$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logout),
     tap(() => {
+      localStorage.removeItem('user');
       this.authService.logout();
       this.router.navigateByUrl('/auth/login');
     })

@@ -3,6 +3,7 @@ import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Route
 import {select, Store} from "@ngrx/store";
 import {filter, map, Observable} from "rxjs";
 import * as fromRoot from './core/store/app.reducer';
+import {AuthService} from "./pages/auth/core/services/auth.service";
 import {isLoggedIn} from "./pages/auth/core/store/auth.selectors";
 
 @Component({
@@ -14,11 +15,14 @@ export class AppComponent implements OnInit {
   public loading$!: Observable<boolean>;
   public isLoggedIn$!: Observable<boolean>;
   constructor(
+    private authService: AuthService,
     private store: Store<fromRoot.AppState>,
     private router: Router) {
   }
 
   ngOnInit() {
+    this.authService.attemptAutoLogin();
+
     this.isLoggedIn$ = this.store.pipe(select(isLoggedIn));
 
     this.loading$ = this.router.events.pipe(

@@ -29,9 +29,25 @@ export class AuthService {
     clearTimeout(this.logoutTimer)
   }
 
-  public initAutoLogout(): void {
+  public initAutoLogout(expiresIn = 60 * 60 * 1000): void {
     this.logoutTimer = setTimeout(() => {
       this.store.dispatch(AuthActions.logout());
-    }, 60 * 60 * 1000);
+    }, expiresIn);
+  }
+
+  public attemptAutoLogin(): void {
+    let user: any = localStorage.getItem('user');
+    if (user) {
+      user = JSON.parse(user) as { expirationDate: number; accessToken: string };
+      const now = Date.now();
+      const expirationDate = user.expirationDate;
+      if (now < expirationDate) {
+        const expiresIn = expirationDate - now;
+        this.store.dispatch(AuthActions.loginSuccess({ accessToken: user.accessToken, expirationDate }));
+        this.initAutoLogout(expiresIn);
+      } else {
+        localStorage.removeItem('user');
+      }
+    }
   }
 }
