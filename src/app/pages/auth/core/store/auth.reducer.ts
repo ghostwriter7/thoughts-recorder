@@ -6,6 +6,7 @@ export interface AuthState {
   isLoggingIn: boolean;
   email?: string;
   accessToken?: string;
+  expirationDate?: number;
 }
 
 export const featureKey = 'auth';
@@ -21,12 +22,12 @@ export const authReducer = createReducer(
     ...state, isLoggingIn: true, email: action.email
   })),
   on(AuthActions.loginSuccess, (state, action) => ({
-    ...state, accessToken: action.accessToken, isLoggedIn: true, isLoggingIn: false
+    ...state, accessToken: action.accessToken, isLoggedIn: true, isLoggingIn: false, expirationDate: action.expirationDate
   })),
   on(AuthActions.loginFailure, (state, action) => ({
     ...state, email: undefined, accessToken: undefined, isLoggedIn: false, isLoggingIn: false
   })),
   on(AuthActions.logout, (state) => ({
-    ...state, email: undefined, accessToken: undefined, isLoggedIn: false
+    ...state, email: undefined, accessToken: undefined, isLoggedIn: false, expirationDate: undefined
   }))
 );

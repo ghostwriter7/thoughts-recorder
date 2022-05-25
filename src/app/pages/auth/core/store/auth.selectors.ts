@@ -13,4 +13,9 @@ export const getAccessToken = createSelector(
   auth => auth.accessToken
 );
 
+export const getExpirationDate = createSelector(
+  selectAuthState,
+  auth => auth.expirationDate
+);
+
 

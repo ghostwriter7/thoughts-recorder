@@ -12,7 +12,10 @@ export class AuthEffects {
     ofType(AuthActions.login),
     switchMap(({email, password}) => this.authService.login(email, password).pipe(
       tap(() => this.router.navigateByUrl('/home')),
-      map(({ accessToken }) => AuthActions.loginSuccess({accessToken})),
+      map(({ accessToken }) => {
+        const expirationDate = Date.now() + 60 * 60 * 1000;
+        return AuthActions.loginSuccess({accessToken, expirationDate});
+      }),
       delay(300),
       catchError(({error}) => of(AuthActions.loginFailure({ message: error.message })))
     ))
@@ -29,7 +32,10 @@ export class AuthEffects {
 
   logout$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logout),
-    tap(() => this.router.navigateByUrl('/auth/login'))
+    tap(() => {
+      this.authService.logout();
+      this.router.navigateByUrl('/auth/login');
+    })
  ), { dispatch: false});
 
   apiResponse$ = createEffect(() => this.actions$.pipe(
@@ -40,6 +46,9 @@ export class AuthEffects {
       AuthActions.signUpFailure
     ),
     tap((action) => {
+      if (action.type === AuthActions.loginSuccess.type) {
+        this.authService.initAutoLogout();
+      }
       const message = (action as any).message ?? `You've successfully logged in!`;
       const className = (action as any).message ? 'alert--error' : 'alert--success';
       this.snackBar.open(message, undefined, { duration: 1500, verticalPosition: 'top', horizontalPosition: 'right', panelClass: className });
